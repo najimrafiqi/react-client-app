@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 
 import { cars } from "./demo";
+import CarItem from "./CarItem";
 
 const App: React.FC = () => {
   return (
@@ -12,7 +13,7 @@ const App: React.FC = () => {
         <ul>
           {cars.map((car) => (
             <li>
-              {car.model} - {car.color}
+              <CarItem car={car} />
             </li>
           ))}
         </ul>

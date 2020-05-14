@@ -1,4 +1,4 @@
-interface ICar {
+export interface ICar {
   color: string;
   model: string;
   topSpeed?: number;

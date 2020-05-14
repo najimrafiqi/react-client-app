@@ -1,16 +1,17 @@
 import React from "react";
 
-import { ICar } from "./demo.ts";
-import { car } from "/demo";
+import { ICar } from "./demo";
 
 interface IProps {
   car: ICar;
 }
 
-const CarItem: React.FC<IProps> = (car) => {
+const CarItem: React.FC<IProps> = (props) => {
   return (
     <div>
-      <h1>{carr.color}</h1>
+      <h1>
+        {props.car.model} - {props.car.color}
+      </h1>
     </div>
   );
 };
