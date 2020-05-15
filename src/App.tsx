@@ -1,24 +1,39 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+import { Header, Icon, List } from "semantic-ui-react";
+import axios from "axios";
+
 import "./App.css";
 
-import { cars } from "./demo";
-import CarItem from "./CarItem";
+class App extends Component {
+  state = {
+    values: [],
+  };
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <ul>
-          {cars.map((car) => (
-            <li>
-              <CarItem car={car} />
-            </li>
+  componentDidMount() {
+    axios.get("http://localhost:60668/api/values").then((response) => {
+      this.setState({
+        values: response.data,
+      });
+    });
+  }
+  render() {
+    return (
+      <div>
+        <Header as="h2">
+          <Icon name="users" />
+          <Header.Content>Reactivities React - Application</Header.Content>
+        </Header>
+        <List>
+          {this.state.values.map((value: any) => (
+            <List.Item key={value.id}>
+              {value.id} - {value.name}
+            </List.Item>
           ))}
-        </ul>
-      </header>
-    </div>
-  );
-};
+        </List>
+
+        <ul></ul>
+      </div>
+    );
+  }
+}
 export default App;
